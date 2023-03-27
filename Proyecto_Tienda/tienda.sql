@@ -30,7 +30,7 @@ CREATE TABLE `clientes` (
   `apellidos` char(60) NOT NULL,
   `direccion` char(60) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (1,'Jaider','Quintero','Km 1'),(2,'Sandy','Romero','Calle 24'),(3,'Liliana','Socarras','Clla 12'),(4,'Carlos','Ortiz','Clla 12'),(5,'Juan','Mendoza','Calle 22'),(6,'Andres','Larada','Cll 14'),(7,'Abraham','Rojas','Kra 18');
+INSERT INTO `clientes` VALUES (1,'Jaider','Quintero','Km 1'),(2,'Sandy','Romero','Calle 24'),(3,'Liliana','Socarras','Clla 12'),(4,'Carlos','Ortiz','Clla 12'),(5,'Juan','Mendoza','Calle 22'),(6,'Andres','Larada','Cll 14'),(7,'Abraham','Rojas','Kra 18'),(8,'Santander','Curvelo','Kra 8'),(9,'Michael','Iglesias','Clle 11'),(10,'Jose','Mercado','Kra 9'),(11,'Jhonatan','Rojas','Calle 100');
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -369,4 +369,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-26 21:15:01
+-- Dump completed on 2023-03-26 22:36:08
