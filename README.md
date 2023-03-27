@@ -18,7 +18,7 @@ Trabajo colaborativo de la materia de Base de Datos.
 ```SQL
   Select c. nombre, v.* From clientes c 
   Join ventas v on (c.id=v.clientes_id) 
-  Where v.fecha between "2023-01-20" and "2023-03-22" order by v.fecha asc</code>
+  Where v.fecha between "2023-01-20" and "2023-03-22" order by v.fecha asc
 ```
 <div>
   <img src="https://github.com/santander123/SQL_UNIVERSITY/blob/main/Proyecto_Tienda/Images/Consulta%202.png" alt="Consulta 1">
@@ -28,8 +28,8 @@ Trabajo colaborativo de la materia de Base de Datos.
 <h3>Consulta 3:</h3>
 
 ```SQL
-  Select c.nombre From clientes c 
-  left Join ventas v on (c.id=v.clientes_id)
+  Select c.* From clientes c 
+  left Join ventas v on (c.id=v.clientes_id and v.fecha between "2023-01-21" and "2023-03-21" )
   Where v.clientes_id is null
 ```
 
