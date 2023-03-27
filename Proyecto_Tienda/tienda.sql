@@ -57,7 +57,7 @@ CREATE TABLE `productos` (
   `precioVenta` decimal(10,0) NOT NULL,
   `cantidad` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,6 +66,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
+INSERT INTO `productos` VALUES (1,'Tarjeta Grafica',300,500,50),(2,'Placa Madre',200,300,100),(3,'Procesador',250,700,200),(4,'Memoria Ram',70,150,300),(5,'Disco M.2',150,250,500),(6,'Fuente de Poder',300,500,250);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -83,7 +84,7 @@ CREATE TABLE `proveedores` (
   `telefono` char(120) NOT NULL,
   `correo` char(120) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -92,6 +93,7 @@ CREATE TABLE `proveedores` (
 
 LOCK TABLES `proveedores` WRITE;
 /*!40000 ALTER TABLE `proveedores` DISABLE KEYS */;
+INSERT INTO `proveedores` VALUES (1,'SystemP','Calle 15','3214569878','system@gmail.com'),(2,'CompuMax','Calle 25','3698521471','compumax@gmail.com'),(3,'CompuLake','Kr 63','3217412583','compulake@gmail.com'),(4,'CompuSpace','Calle 50','3652147899','compusapce@gmail.com'),(5,'PcGlobal','Calle 2','3579514568','pcglobal@gmail.com');
 /*!40000 ALTER TABLE `proveedores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -119,6 +121,7 @@ CREATE TABLE `proveedores_has_productos` (
 
 LOCK TABLES `proveedores_has_productos` WRITE;
 /*!40000 ALTER TABLE `proveedores_has_productos` DISABLE KEYS */;
+INSERT INTO `proveedores_has_productos` VALUES (1,1),(3,2),(4,3),(3,4),(5,4),(1,5),(2,6);
 /*!40000 ALTER TABLE `proveedores_has_productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -136,7 +139,7 @@ CREATE TABLE `telefonos` (
   PRIMARY KEY (`id`),
   KEY `fk_telefonos_clientes_idx` (`clientes_id`),
   CONSTRAINT `fk_telefonos_clientes` FOREIGN KEY (`clientes_id`) REFERENCES `clientes` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -145,6 +148,7 @@ CREATE TABLE `telefonos` (
 
 LOCK TABLES `telefonos` WRITE;
 /*!40000 ALTER TABLE `telefonos` DISABLE KEYS */;
+INSERT INTO `telefonos` VALUES (1,'3214569873',1),(2,'3214569851',2),(3,'3214564473',3),(4,'3454569873',4),(5,'3214569873',5),(6,'3218969873',6),(7,'3874569873',7);
 /*!40000 ALTER TABLE `telefonos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,7 +170,7 @@ CREATE TABLE `ventas` (
   PRIMARY KEY (`id`),
   KEY `fk_ventas_clientes1_idx` (`clientes_id`),
   CONSTRAINT `fk_ventas_clientes1` FOREIGN KEY (`clientes_id`) REFERENCES `clientes` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -175,6 +179,7 @@ CREATE TABLE `ventas` (
 
 LOCK TABLES `ventas` WRITE;
 /*!40000 ALTER TABLE `ventas` DISABLE KEYS */;
+INSERT INTO `ventas` VALUES (1,'2023-01-12',50000,5,10,47500,1),(2,'2023-03-21',100000,5,10,95000,2),(3,'2023-02-04',200000,5,10,190000,3),(4,'2023-01-20',300000,5,10,285000,4),(5,'2023-03-24',400000,5,10,380000,5),(6,'2023-02-15',500000,5,10,475000,6),(7,'2023-02-15',600000,5,10,570000,7);
 /*!40000 ALTER TABLE `ventas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,6 +208,7 @@ CREATE TABLE `ventas_has_productos` (
 
 LOCK TABLES `ventas_has_productos` WRITE;
 /*!40000 ALTER TABLE `ventas_has_productos` DISABLE KEYS */;
+INSERT INTO `ventas_has_productos` VALUES (1,1,2),(2,2,5),(3,2,6),(4,4,10),(5,6,20),(6,5,15),(7,3,50);
 /*!40000 ALTER TABLE `ventas_has_productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -239,7 +245,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarProductos`(in nom char(60), precioC char(10), precioV char(10), cant int (11))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarProductos`(in nom char(60), precioC decimal(10), precioV decimal(10), cant int (11))
 begin
 	INSERT INTO productos (nombre, precioCompra, precioVenta,cantidad) 
 VALUES (nom, precioC, precioV, cant);
@@ -260,7 +266,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarProveedores`(in nom char(120), direc char(120), tele char(120), corr int (120))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarProveedores`(in nom char(120), direc char(120), tele char(120), corr char (120))
 begin
 	INSERT INTO proveedores (nombre, direccion, telefono, correo) 
 VALUES (nom, direc, tele, corr);
@@ -303,7 +309,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarTelefono`(in num char(12), client_id int(11))
 begin
-	INSERT INTO productos (numero, cliente_id) 
+	INSERT INTO telefonos (numero, clientes_id) 
 VALUES (num, client_id);
 end ;;
 DELIMITER ;
@@ -321,10 +327,10 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarVentas`(in fech date, suto char(120), tele decimal(10,0), iva decimal (10,0) , des decimal (10,0), tota decimal (10,0))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarVentas`(in fecha date, subto decimal(10), iva decimal (10,0) , descu decimal (10,0), total decimal (10,0), client_id int(11))
 begin
-	INSERT INTO proveedores (fecha, subTotal, iva, descuento, total) 
-VALUES (fech, suto, tele, iva, des, tota);
+	INSERT INTO ventas (fecha, subTotal, iva, descuento, total,clientes_id) 
+VALUES (fecha, subto, iva, descu, total, client_id);
 
 end ;;
 DELIMITER ;
@@ -342,10 +348,10 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarVentas_X_Producto`(vent_id int(11), prod_id int (11), cant int(11))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarVentas_X_Producto`(vent_id int(11), prod_id int (11),cant int(11))
 begin
-	INSERT INTO clientes (ventas_id, productos_id, cantidad) 
-VALUES (vent_id, prod_id, cant);
+	INSERT INTO ventas_has_productos (ventas_id, productos_id,cantidad) 
+VALUES (vent_id, prod_id,cant);
 
 end ;;
 DELIMITER ;
@@ -363,4 +369,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-26  0:55:37
+-- Dump completed on 2023-03-26 21:15:01
