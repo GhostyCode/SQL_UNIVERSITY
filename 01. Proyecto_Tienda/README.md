@@ -9,7 +9,7 @@ Trabajo colaborativo de la materia de Base de Datos.
 ```
 
 <div>
-  <img src="https://github.com/santander123/SQL_UNIVERSITY/blob/main/Proyecto_Tienda/Images/Consulta%201.png" alt="Consulta 1">
+  <img src="https://github.com/santander123/SQL_UNIVERSITY/blob/main/01.%20Proyecto_Tienda/Images/Consulta%201.png" alt="Consulta 1">
 </div>
 
 ---
@@ -21,7 +21,7 @@ Trabajo colaborativo de la materia de Base de Datos.
   Where v.fecha between "2023-01-20" and "2023-03-22" order by v.fecha asc
 ```
 <div>
-  <img src="https://github.com/santander123/SQL_UNIVERSITY/blob/main/Proyecto_Tienda/Images/Consulta%202.png" alt="Consulta 1">
+  <img src="https://github.com/santander123/SQL_UNIVERSITY/blob/main/01.%20Proyecto_Tienda/Images/Consulta%202.png" alt="Consulta 1">
 </div>
 
 ---
@@ -34,6 +34,6 @@ Trabajo colaborativo de la materia de Base de Datos.
 ```
 
 <div>
-  <img src="https://github.com/santander123/SQL_UNIVERSITY/blob/main/Proyecto_Tienda/Images/Consulta%203.png" alt="Consulta 1">
+  <img src="https://github.com/santander123/SQL_UNIVERSITY/blob/main/01.%20Proyecto_Tienda/Images/Consulta%203.png" alt="Consulta 1">
 </div>
 
