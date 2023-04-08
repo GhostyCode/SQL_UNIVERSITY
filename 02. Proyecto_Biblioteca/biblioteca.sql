@@ -2,7 +2,7 @@ CREATE DATABASE  IF NOT EXISTS `biblioteca` /*!40100 DEFAULT CHARACTER SET utf8m
 USE `biblioteca`;
 -- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
--- Host: localhost    Database: biblioteca
+-- Host: 127.0.0.1    Database: biblioteca
 -- ------------------------------------------------------
 -- Server version	8.0.17
 
@@ -28,7 +28,7 @@ CREATE TABLE `autor` (
   `idAutor` int(11) NOT NULL AUTO_INCREMENT,
   `Nombre` char(60) NOT NULL,
   PRIMARY KEY (`idAutor`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,6 +37,7 @@ CREATE TABLE `autor` (
 
 LOCK TABLES `autor` WRITE;
 /*!40000 ALTER TABLE `autor` DISABLE KEYS */;
+INSERT INTO `autor` VALUES (100,'gabriel'),(101,'rafael'),(102,'homero'),(103,'chespiare'),(104,'jose');
 /*!40000 ALTER TABLE `autor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -54,7 +55,7 @@ CREATE TABLE `ejemplares` (
   PRIMARY KEY (`idEjemplares`),
   KEY `id_libros_idx` (`id_libros`),
   CONSTRAINT `id_libros` FOREIGN KEY (`id_libros`) REFERENCES `libros` (`idLibro`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1005 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,6 +64,7 @@ CREATE TABLE `ejemplares` (
 
 LOCK TABLES `ejemplares` WRITE;
 /*!40000 ALTER TABLE `ejemplares` DISABLE KEYS */;
+INSERT INTO `ejemplares` VALUES (1000,1,'riohacha'),(1001,2,'camarones'),(1002,4,'dibulla'),(1003,3,'la flores'),(1004,5,'riohacha');
 /*!40000 ALTER TABLE `ejemplares` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -74,7 +76,7 @@ DROP TABLE IF EXISTS `escribir`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `escribir` (
-  `idEscribir` int(11) NOT NULL,
+  `idEscribir` int(11) NOT NULL AUTO_INCREMENT,
   `dia_mes_anio` date NOT NULL,
   `idAutor` int(11) NOT NULL,
   `idLibro` int(11) NOT NULL,
@@ -83,7 +85,7 @@ CREATE TABLE `escribir` (
   KEY `idAutor_idx` (`idAutor`),
   CONSTRAINT `idAutor` FOREIGN KEY (`idAutor`) REFERENCES `autor` (`idAutor`),
   CONSTRAINT `idLibro` FOREIGN KEY (`idLibro`) REFERENCES `libros` (`idLibro`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -92,6 +94,7 @@ CREATE TABLE `escribir` (
 
 LOCK TABLES `escribir` WRITE;
 /*!40000 ALTER TABLE `escribir` DISABLE KEYS */;
+INSERT INTO `escribir` VALUES (1,'2000-03-14',100,1),(2,'1950-12-17',102,2),(3,'2003-08-18',101,5),(4,'2013-07-30',104,3),(5,'1568-05-01',103,4);
 /*!40000 ALTER TABLE `escribir` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -108,9 +111,8 @@ CREATE TABLE `libros` (
   `Numero_pagina` char(100) NOT NULL,
   `Editorial` char(70) NOT NULL,
   `ISBN` char(100) NOT NULL,
-  `libroscol` varchar(45) NOT NULL,
   PRIMARY KEY (`idLibro`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -119,6 +121,7 @@ CREATE TABLE `libros` (
 
 LOCK TABLES `libros` WRITE;
 /*!40000 ALTER TABLE `libros` DISABLE KEYS */;
+INSERT INTO `libros` VALUES (1,'la hiliada','200','escribe','123456788909'),(2,'romeo y julieta','180','santillana','123456788910'),(3,'la maria','150','santillana','123456788911'),(4,'capericita roja','178','escribe','123456788912'),(5,'el titanic','235','mundopalabras','123456788913'),(6,'','','',''),(7,'','','','');
 /*!40000 ALTER TABLE `libros` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -140,7 +143,7 @@ CREATE TABLE `prestar` (
   KEY `idUsuario_idx` (`idUsuario`),
   CONSTRAINT `idEjemplares` FOREIGN KEY (`idEjemplares`) REFERENCES `ejemplares` (`idEjemplares`),
   CONSTRAINT `idUsuario` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -149,6 +152,7 @@ CREATE TABLE `prestar` (
 
 LOCK TABLES `prestar` WRITE;
 /*!40000 ALTER TABLE `prestar` DISABLE KEYS */;
+INSERT INTO `prestar` VALUES (1,2,1000,'2023-03-10','2023-02-10'),(2,1,1004,'2023-03-10','2023-02-10'),(3,3,1003,'2023-03-12','2023-02-12'),(4,4,1002,'2023-03-16','2023-02-16'),(5,2,1001,'2023-03-15','2023-02-15');
 /*!40000 ALTER TABLE `prestar` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,7 +170,7 @@ CREATE TABLE `usuarios` (
   `Direccion` char(80) NOT NULL,
   `Telefono` char(12) NOT NULL,
   PRIMARY KEY (`idUsuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -175,6 +179,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES (1,'diego','maradona','clle 34','3934565677'),(2,'james','rodriges','clle 45','3109878685'),(3,'pepe','palacio','cra 34','3453436575'),(4,'juan','julio','km4','343123455644'),(5,'daniel','perez','clle 1','236456854');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -191,4 +196,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-06 14:59:45
+-- Dump completed on 2023-04-08 17:31:21
