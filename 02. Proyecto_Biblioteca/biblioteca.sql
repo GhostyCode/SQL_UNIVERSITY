@@ -2,7 +2,7 @@ CREATE DATABASE  IF NOT EXISTS `biblioteca` /*!40100 DEFAULT CHARACTER SET utf8m
 USE `biblioteca`;
 -- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: biblioteca
+-- Host: localhost    Database: biblioteca
 -- ------------------------------------------------------
 -- Server version	8.0.17
 
@@ -85,7 +85,7 @@ CREATE TABLE `escribir` (
   KEY `idAutor_idx` (`idAutor`),
   CONSTRAINT `idAutor` FOREIGN KEY (`idAutor`) REFERENCES `autor` (`idAutor`),
   CONSTRAINT `idLibro` FOREIGN KEY (`idLibro`) REFERENCES `libros` (`idLibro`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -94,7 +94,7 @@ CREATE TABLE `escribir` (
 
 LOCK TABLES `escribir` WRITE;
 /*!40000 ALTER TABLE `escribir` DISABLE KEYS */;
-INSERT INTO `escribir` VALUES (1,'2000-03-14',100,1),(2,'1950-12-17',102,2),(3,'2003-08-18',101,5),(4,'2013-07-30',104,3),(5,'1568-05-01',103,4);
+INSERT INTO `escribir` VALUES (1,'2019-03-14',100,1),(2,'2021-12-17',102,2),(3,'2023-08-18',101,5),(4,'2023-07-30',104,3),(5,'2022-05-01',103,4),(6,'2023-09-24',100,6),(7,'2023-05-20',104,7);
 /*!40000 ALTER TABLE `escribir` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -121,7 +121,7 @@ CREATE TABLE `libros` (
 
 LOCK TABLES `libros` WRITE;
 /*!40000 ALTER TABLE `libros` DISABLE KEYS */;
-INSERT INTO `libros` VALUES (1,'la hiliada','200','escribe','123456788909'),(2,'romeo y julieta','180','santillana','123456788910'),(3,'la maria','150','santillana','123456788911'),(4,'capericita roja','178','escribe','123456788912'),(5,'el titanic','235','mundopalabras','123456788913'),(6,'','','',''),(7,'','','','');
+INSERT INTO `libros` VALUES (1,'La hiliada','200','escribe','123456788909'),(2,'Romeo y Julieta','180','santillana','123456788910'),(3,'La Maria','150','santillana','123456788911'),(4,'Capericita Roja','178','escribe','123456788912'),(5,'El Titanic','235','mundopalabras','123456788913'),(6,'El mundo de Sofia','900','sanbook','123456788914'),(7,'Ser para hacer','1500','crisbook','123456788915');
 /*!40000 ALTER TABLE `libros` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -196,4 +196,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-08 17:31:21
+-- Dump completed on 2023-04-10 10:50:31

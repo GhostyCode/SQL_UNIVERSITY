@@ -17,7 +17,7 @@ Los usuarios de la biblioteca del centro también disponen de ficha en la biblio
 Realizar las relaciones oportunas entre tablas e insertar cinco registros en cada una de las tablas.
 
 <div>
-  <img src="https://github.com/santander123/SQL_UNIVERSITY/blob/main/01.%20Proyecto_Tienda/Images/Consulta%201.png" alt="Consulta 1">
+  <img src="images/ejercicio.jpg" style="max-width:500px;" alt="Consulta 1">
 </div>
 
 </p>
@@ -28,7 +28,7 @@ Realizar las relaciones oportunas entre tablas e insertar cinco registros en cad
 <details><summary>Consulta 1</summary>
 <p>
 
-#### Obtener el nombre del usuario que presto más libros, y la cantidad de veces que presto un libro!
+#### Obtener el nombre del usuario que presto más libros, y la cantidad de veces que presto un libro
 
 ```SQL
   select nombre, count(p.idPrestar) as 'Cantidad de veces que presto un libro'
@@ -39,7 +39,7 @@ Realizar las relaciones oportunas entre tablas e insertar cinco registros en cad
 ```
 
 <div>
-  <img src="https://github.com/santander123/SQL_UNIVERSITY/blob/main/01.%20Proyecto_Tienda/Images/Consulta%201.png" alt="Consulta 1">
+  <img src="images/Consulta1.png" style="max-width:700px;" alt="Consulta 1">
 </div>
 
 </p>
@@ -51,18 +51,18 @@ Realizar las relaciones oportunas entre tablas e insertar cinco registros en cad
 <details><summary>Consulta 2</summary>
 <p>
 
-#### Obtener el nombre del usuario que presto más libros, y la cantidad de veces que presto un libro!
+#### Obtener el nombre de los autores, la cantidad de libros que escribio en un rango de fecha y el titulo de los libros
 
 ```SQL
-  select nombre, count(p.idPrestar) as 'Cantidad de veces que presto un libro'
-  from usuarios u join prestar p on(u.idUsuario =p.idUsuario)
-  group by p.idUsuario
-  order by count(p.idPrestar) desc
-  limit 1;
+  select a.nombre, count(e.idLibro) as Num_Lib, GROUP_CONCAT(l.titulo SEPARATOR ', ') as "Titulo del libro"
+  from autor a left join escribir e on (a.idAutor = e.idAutor)
+  right join libros l on (e.idLibro = l.idLibro) WHERE e.dia_mes_anio BETWEEN '2023-01-01' AND '2023-12-31'
+  group by a.idAutor
+  order by Num_Lib desc;
 ```
 
 <div>
-  <img src="https://github.com/santander123/SQL_UNIVERSITY/blob/main/01.%20Proyecto_Tienda/Images/Consulta%201.png" alt="Consulta 1">
+  <img src="images/Consulta2.png" style="max-width:700px;" alt="Consulta 2">
 </div>
 
 </p>
@@ -74,18 +74,18 @@ Realizar las relaciones oportunas entre tablas e insertar cinco registros en cad
 <details><summary>Consulta 3</summary>
 <p>
 
-#### Obtener el nombre del usuario que presto más libros, y la cantidad de veces que presto un libro!
+#### Consultar el título y la fecha de los libros prestados en un rango de fecha
 
 ```SQL
-  select nombre, count(p.idPrestar) as 'Cantidad de veces que presto un libro'
-  from usuarios u join prestar p on(u.idUsuario =p.idUsuario)
-  group by p.idUsuario
-  order by count(p.idPrestar) desc
-  limit 1;
+  SELECT l.titulo, p.fecha_pres
+  FROM prestar p JOIN ejemplares e ON (p.idEjemplares = e.idEjemplares)
+  JOIN libros l ON (e.id_libros = l.idLibro)
+  WHERE p.fecha_pres BETWEEN '2023-02-12' AND '2023-02-16'
+  order by p.fecha_pres asc;
 ```
 
 <div>
-  <img src="https://github.com/santander123/SQL_UNIVERSITY/blob/main/01.%20Proyecto_Tienda/Images/Consulta%201.png" alt="Consulta 1">
+  <img src="images/Consulta3.png" style="max-width:700px;" alt="Consulta 13">
 </div>
 
 </p>
