@@ -17,7 +17,7 @@ Los usuarios de la biblioteca del centro también disponen de ficha en la biblio
 Realizar las relaciones oportunas entre tablas e insertar cinco registros en cada una de las tablas.
 
 <div>
-  <img src="https://github.com/santander123/SQL_UNIVERSITY/blob/develop/02.%20Proyecto_Biblioteca/images/ejercicio.png" alt="Ejercicio">
+  <img src="images/ejercicio.jpg" alt="Ejercicio">
 </div>
 
 </p>
@@ -39,7 +39,7 @@ Realizar las relaciones oportunas entre tablas e insertar cinco registros en cad
 ```
 
 <div>
-  <img src="https://github.com/santander123/SQL_UNIVERSITY/blob/develop/02.%20Proyecto_Biblioteca/images/Consulta1.png" alt="Consulta 1">
+  <img src="images/Consulta1.png" alt="Consulta 1">
 </div>
 
 </p>
@@ -62,7 +62,7 @@ Realizar las relaciones oportunas entre tablas e insertar cinco registros en cad
 ```
 
 <div>
-  <img src="images/Consulta2.png" style="max-width:700px;" alt="Consulta 2">
+  <img src="images/Consulta2.png" alt="Consulta 2">
 </div>
 
 </p>
@@ -85,7 +85,7 @@ Realizar las relaciones oportunas entre tablas e insertar cinco registros en cad
 ```
 
 <div>
-  <img src="images/Consulta3.png" style="max-width:700px;" alt="Consulta 13">
+  <img src="images/Consulta3.png" alt="Consulta 13">
 </div>
 
 </p>
