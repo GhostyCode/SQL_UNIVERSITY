@@ -74,18 +74,22 @@ Realizar las relaciones oportunas entre tablas e insertar cinco registros en cad
 <details><summary>Consulta 3</summary>
 <p>
 
-#### Consultar el título y la fecha de los libros prestados en un rango de fecha
+#### Consultar el título y la fecha de los libros prestados en un rango de fecha mediante procedimiento almacenado
 
 ```SQL
-  SELECT l.titulo, p.fecha_pres
-  FROM prestar p JOIN ejemplares e ON (p.idEjemplares = e.idEjemplares)
-  JOIN libros l ON (e.id_libros = l.idLibro)
-  WHERE p.fecha_pres BETWEEN '2023-02-12' AND '2023-02-16'
-  order by p.fecha_pres asc;
+  delimiter //
+  CREATE procedure libros_x_fecha (IN fechaIni date, fechaFin date)
+  BEGIN
+   SELECT l.titulo, p.fecha_pres
+    FROM prestar p JOIN ejemplares e ON (p.idEjemplares = e.idEjemplares)
+    JOIN libros l ON (e.id_libros = l.idLibro)
+    WHERE p.fecha_pres BETWEEN fechaIni AND fechaFin
+    order by p.fecha_pres asc;
+  END//
 ```
 
 <div>
-  <img src="images/Consulta3.png" alt="Consulta 13">
+  <img src="images/Consulta3.PNG" alt="Consulta 13">
 </div>
 
 </p>
