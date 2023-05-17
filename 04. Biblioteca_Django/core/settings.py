@@ -1,17 +1,18 @@
 from pathlib import Path
+import os
+import environ
+
+env=environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-%g+17g^6g-(!nv18-ffij&)_oldcx+bj^^qtzh+-tor-hoq)d)'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -25,9 +26,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Apps.clientes',
-    'Apps.productos',
-    'Apps.ventas',
+    'Apps.usuarios',
+    'Apps.prestamos',
+    'Apps.biblioteca',
 ]
 
 MIDDLEWARE = [
@@ -65,16 +66,8 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'almacen2023',
-        'USER': 'root',
-        'PASSWORD': '******',
-        'HOST': 'localhost',
-        'PORT': '3306'
-    }
+    'default': env.db("DATABASE_URL", default="mysql:///biblioteca2023"),
 }
-
 
 
 # Password validation
