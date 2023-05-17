@@ -1,16 +1,5 @@
 from django.db import models
 
-# Modelo del autor
-class Autor(models.Model):
-    nombreAutor = models.CharField(max_length=100, help_text="Ingrese el nombre del autor")
-    
-    def __str__(self):
-        return self.nombreAutor
-
-    class Meta:
-        verbose_name = "autor"
-        verbose_name_plural = "autores"
-
 
 # Modelo del libro
 class Libro(models.Model):
@@ -25,6 +14,18 @@ class Libro(models.Model):
     class Meta:
         verbose_name = "libro"
         verbose_name_plural = "libros"
+
+# Modelo del autor
+class Autor(models.Model):
+    nombreAutor = models.CharField(max_length=100, help_text="Ingrese el nombre del autor")
+    libro = models.ManyToManyField(Libro, through='Publicacion', verbose_name="publicacion")
+    def __str__(self):
+        return self.nombreAutor
+
+    class Meta:
+        verbose_name = "autor"
+        verbose_name_plural = "autores"
+
 
 
 # Modelo de publicacion
@@ -53,3 +54,5 @@ class Ejemplar(models.Model):
     class Meta:
         verbose_name = 'ejemplar'
         verbose_name_plural = 'Ejemplares'
+
+

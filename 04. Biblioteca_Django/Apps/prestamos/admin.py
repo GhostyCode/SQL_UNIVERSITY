@@ -1,7 +1,7 @@
 from django.contrib import admin
-from Apps.prestamos.models import Prestar
+# from Apps.prestamos.models import Prestar
 
 class PrestamoAdmin(admin.ModelAdmin):
     pass
 
-admin.site.register(Prestar, PrestamoAdmin)
+# admin.site.register(Prestar, PrestamoAdmin)
