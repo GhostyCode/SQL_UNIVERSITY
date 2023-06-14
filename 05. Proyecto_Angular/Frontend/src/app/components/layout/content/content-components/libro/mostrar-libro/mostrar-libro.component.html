@@ -1,0 +1,22 @@
+<div class="card">
+    <p-table [value]="obj" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Id</th>
+                <th>Titulo Libro</th>
+                <th>Numero Pagina</th>
+                <th>Editorial</th>
+                <th>Isbn</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-obj>
+            <tr>
+                <td>{{ obj.id }}</td>
+                <td>{{ obj.tituloLibro }}</td>
+                <td>{{ obj.numeroPaginaLibro }}</td>
+                <td>{{ obj.editorialLibro }}</td>
+                <td>{{ obj.isbnLibro }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

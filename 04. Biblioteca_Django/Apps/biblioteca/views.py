@@ -3,4 +3,3 @@ from django.http import HttpResponse
 
 def homeBiblioteca(request):
     return HttpResponse("Bienvenido a la aplicacion Biblioteca")
-
